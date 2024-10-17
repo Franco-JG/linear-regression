@@ -3,24 +3,17 @@ function plotData(x, y)
 %   PLOTDATA(x,y) plots the data points and gives the figure axes labels of
 %   population and profit.
 
-% ====================== YOUR CODE HERE ======================
-% Instructions: Plot the training data into a figure using the 
-%               "figure" and "plot" commands. Set the axes labels using
-%               the "xlabel" and "ylabel" commands. Assume the 
-%               population and revenue data have been passed in
-%               as the x and y arguments of this function.
-%
-% Hint: You can use the 'rx' option with plot to have the markers
-%       appear as red crosses. Furthermore, you can make the
-%       markers larger by using plot(..., 'rx', 'MarkerSize', 10);
+figure(1, 'name', 'plotData', 'NumberTitle', 'off');
 
-figure; % open a new figure window
+data = load('ex1data1.txt'); 
+x = data(:, 1); y = data(:, 2);
 
-
-
-
-
-
-% ============================================================
+plot(x, y, 'rx', 'markersize', 5);
+xlim([4 24]);
+ylim([-5 25]);
+xticks(4:2:24);
+yticks(-5:5:25);
+ylabel('Profit in $10,000s');
+xlabel('Population of City in 10,000s');
 
 end
