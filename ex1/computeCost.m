@@ -9,14 +9,10 @@ m = length(y); % number of training examples
 % You need to return the following variables correctly 
 J = 0;
 
-% ====================== YOUR CODE HERE ======================
-% Instructions: Compute the cost of a particular choice of theta
-%               You should set J to the cost.
+for i = 1:m
+    J +=  power(dot(theta, X(i, [1, 2])) - y(i), 2);
+endfor
 
-
-
-
-
-% =========================================================================
+J = 1 / (2 * m) * J;
 
 end
