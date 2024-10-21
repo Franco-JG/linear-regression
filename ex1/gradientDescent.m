@@ -23,7 +23,7 @@ for iter = 1:num_iters
     % se actualiza theta de manera simulatena theta_prev.
     for j = 1:p
 
-        % % calcula la derivada parcial dJ/d(theta_j)
+        % % se calcula la derivada parcial dJ/d(theta_j)
          deriv = 0;
          for i = 1:m
            deriv = deriv + (theta_prev'*X(i, :)'-y(i))*X(i, j);
