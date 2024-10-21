@@ -16,30 +16,33 @@ for iter = 1:num_iters
 %       of the cost function (computeCost) and gradient here.
 
 % Código para ir guardando la theta
-theta_prev = theta;
+    theta_prev = theta;
 
-p = size(X, 2);  % Número de características (o parámetros)
-m = length(y);   % Número de ejemplos
+    p = size(X, 2);
 
-% Se calcula la hipótesis (predicciones)
-hypothesis = X * theta_prev;  % Vector de predicciones
+    % se actualiza theta de manera simulatena theta_prev.
+    for j = 1:p
 
-% Calcula el error
-errors = hypothesis - y;  % Diferencia entre predicciones y valores reales
+        % % se calcula la derivada parcial dJ/d(theta_j)
+         deriv = 0;
+         for i = 1:m
+           deriv = deriv + (theta_prev'*X(i, :)'-y(i))*X(i, j);
+         end
+         deriv = deriv/m;
 
-% Se actualiza theta de manera simultánea
-for j = 1:p
-    % Calcula la derivada parcial dJ/d(theta_j) de forma vectorizada
-    deriv = (errors' * X(:, j)) / m;  % Producto punto y promedio
-    % Se actualiza theta_j
-    theta(j) = theta_prev(j) - (alpha * deriv);  % Regla de actualización del gradiente
-end
 
-% ========================================================================
-% Save the cost J in every iteration
-J_history(iter) = computeCost(X, y, theta);  % Costo en la iteración actual
-theta_history(iter, :) = theta';               % Historial de los valores de theta
+        % se actualiza theta_j
+        theta(j) = theta_prev(j)-(alpha*deriv);
+    end
+    %
 
+
+
+    % ============================================================
+
+    % Save the cost J in every iteration
+    J_history(iter) = computeCost(X, y, theta);
+    theta_history(iter, :) = theta';
 
 end
 
